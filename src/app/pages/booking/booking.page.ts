@@ -31,7 +31,7 @@ export class BookingPage implements OnInit {
   info: any = [
     'You can book from Monday to Friday',
     'Your booking duration should be either 30 mins or 1 hour',
-    'Your can from 09:00 to 17:00'
+    'Your can book from 09:00 to 17:00'
   ];
 
   constructor(private params: NavExtrasService,
@@ -132,7 +132,7 @@ export class BookingPage implements OnInit {
       this.api.delete(this.booking).subscribe(
         (res) => {
           this.api.hideLoading();
-          this.api.showTost("Booking has been canceled");
+          this.api.showTost("Booking has been cancelled");
           this.navCtrl.navigateBack('/home');
         },
         (err) => {
@@ -195,6 +195,30 @@ export class BookingPage implements OnInit {
 
     await alert.present();
 
+  }
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm!',
+      message: 'Are you sure you want to cancel this booking?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+            this.cancel();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }
