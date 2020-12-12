@@ -1,0 +1,85 @@
+<ion-header mode="ios">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button>Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>{{newBooking? 'New booking':'Booking details'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+  <ion-list lines="none">
+    <ion-card class="ion-padding">
+      <ion-label>
+        <h3>Booking date <ion-icon (click)="showTip(0)" color="primary" name="information-circle-outline" class="tip">
+          </ion-icon>
+        </h3>
+      </ion-label>
+
+      <ion-item class="ion-no-padding" (click)="openCalendar()">
+        <h5>{{booking.bookingStart  | moment:"DD-MM-YYYY"}}</h5>
+        <ion-icon color="primary" slot="end" name="calendar"></ion-icon>
+      </ion-item>
+    </ion-card>
+    <ion-card class="ion-padding">
+      <ion-label>
+        <h3>Duration <ion-icon (click)="showTip(1)" color="primary" name="information-circle-outline" class="tip">
+          </ion-icon>
+        </h3><br>
+      </ion-label>
+      <ion-segment [(ngModel)]="duration" (ionChange)="durationChanged($event)">
+        <ion-segment-button value="30" color="primary">
+          <ion-label>30 min</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="60">
+          <ion-label>1 hour</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-card>
+
+
+    <ion-card class="ion-padding" *ngIf="booking.bookingStart">
+      <ion-label>
+        <h3>Start time <ion-icon (click)="showTip(2)" color="primary" name="information-circle-outline" class="tip">
+          </ion-icon>
+        </h3>
+      </ion-label>
+      <ion-item class="timePicker">
+        <ion-datetime (ionChange)="updateEndTime()" [min]="startMin" [max]="startMax" [(ngModel)]="booking.bookingStart"
+          class="ion-no-padding" display-format="HH:mm" picker-format="HH:mm"></ion-datetime>
+        <ion-icon color="primary" slot="end" name="time"></ion-icon>
+      </ion-item>
+      <br>
+      <ion-label>
+        <h3>End time <ion-icon (click)="showTip(2)" color="primary" name="information-circle-outline" class="tip">
+          </ion-icon>
+        </h3>
+      </ion-label>
+      <ion-item class="timePicker" *ngIf="booking.bookingEnd">
+        <ion-datetime [min]="endMin" [max]="endMax" (ionChange)="updateStarTime()" [(ngModel)]="booking.bookingEnd"
+          class="ion-no-padding" display-format="HH:mm" picker-format="HH:mm"></ion-datetime>
+        <ion-icon color="primary" slot="end" name="time"></ion-icon>
+      </ion-item>
+    </ion-card>
+    <ion-card class="ion-padding">
+      <ion-label>
+        <h3>Description</h3>
+        <ion-textarea [(ngModel)]="booking.description"></ion-textarea>
+      </ion-label>
+    </ion-card>
+  </ion-list>
+  <section class="ion-padding" *ngIf="newBooking">
+    <ion-button (click)="save()" expand="block">Save</ion-button>
+  </section>
+  <section class="ion-padding" *ngIf="!newBooking">
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="cancel()" color="dark" expand="block">Cancel booking</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="update()" expand="block">Update</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </section>
+</ion-content>

@@ -1,0 +1,35 @@
+ion-segment-button {
+  --background-checked: var(--ion-color-primary);
+  --color-checked: var(--ion-color-primary);
+  --indicator-box-shadow: transparent!important;
+  padding: 0.2rem; 
+  --color-checked: white;
+  --indicator-color : transparent!important;
+}
+.rightArrow{
+    color:#b7b6b6;
+}
+.item-native {
+    padding-inline-start: 0px !important;
+}
+h5{
+    margin-top:8px;
+}
+.timePicker{
+    margin-left: -15px;
+    font-weight: 500;
+    font-size: 18px !important;
+}
+ion-textarea{
+   border: 1px solid #e2dcdc;
+    margin-top: 15px;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+}
+.tip{
+    font-size: 18px;
+    margin-bottom: -5px;
+    opacity: .8;
+}

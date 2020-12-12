@@ -1,0 +1,57 @@
+#container {
+	text-align: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.logo {
+	width: 150px;
+	margin: 30px auto;
+}
+#container p {
+	font-size: 16px;
+	line-height: 22px;
+	color: #8c8c8c;
+	margin: 0;
+}
+.date {
+	color: #858484; //  #858484;
+	font-size: 40px;
+	text-align: center;
+}
+.day {
+	color: grey;
+	font-size: 13px;
+	font-weight: 500;
+	text-align: center;
+}
+.dayBox {
+	padding: 10px;
+}
+.icon {
+	color: #999898;
+	margin-bottom: -3px;
+	padding-right: 5px;
+}
+.mainHeading {
+	color: grey;
+	padding-bottom: 0px;
+}
+.badge {
+	margin-right: 0px;
+}
+.item-inner {
+	border: none !important;
+	border-style: none !important;
+	border-color: white;
+}
+.time {
+	padding-bottom: 20px;
+}
+.duration {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
